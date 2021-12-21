@@ -1,0 +1,22 @@
+
+
+services:
+  konoha-db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+
+  konoha-api: 
+    build: ./api-node/
+    environment:
+      NODE_ENV: docker 
+      DB_HOST: konoha-db
+    ports:
+      - "3000:3000"
+    restart: always 
+    depends_on:
+      - konoha-db
+    
