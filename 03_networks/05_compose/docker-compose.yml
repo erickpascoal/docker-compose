@@ -3,6 +3,8 @@
 services:
   konoha-db:
     image: postgres
+    volumes:
+      - ./api-node/src/database/init.sql:/docker-entrypoint-initdb.d/init.sql
     restart: always
     environment:
       POSTGRES_PASSWORD: postgres
