@@ -1,7 +1,8 @@
 
 
 services:
-  konoha-db:
+  ctn-konoha-database:
+    container_name: ctn-konoha-database
     image: postgres
     volumes:
       - ./api-node/src/database/init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -10,15 +11,25 @@ services:
       POSTGRES_PASSWORD: postgres
     ports:
       - "5432:5432"
+    networks:
+      - konoha-network
 
-  konoha-api: 
+  ctn-konoha-api: 
+    container_name: ctn-konoha-api
     build: ./api-node/
     environment:
       NODE_ENV: docker 
-      DB_HOST: konoha-db
+      DB_HOST: ctn-konoha-database
     ports:
       - "3000:3000"
     restart: always 
     depends_on:
-      - konoha-db
-    
+      - ctn-konoha-database
+    networks:
+      - konoha-network
+    # volumes:
+    #   - "C:\\Users\\note-work\\Desktop\\Docker\\03_networks\\05_compose\\api-node:/app"
+
+networks:
+  konoha-network: 
+    driver: bridge
