@@ -1,0 +1,4 @@
+CREATE USER docker;
+CREATE DATABASE konoha;
+GRANT ALL PRIVILEGES ON DATABASE konoha TO docker;
+

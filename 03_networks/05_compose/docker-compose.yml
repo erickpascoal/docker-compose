@@ -1,14 +1,9 @@
-
+version: '3'
 
 services:
   ctn-konoha-database:
     container_name: ctn-konoha-database
-    image: postgres
-    volumes:
-      - ./api-node/src/database/init.sql:/docker-entrypoint-initdb.d/init.sql
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: postgres
+    build: ./database/
     ports:
       - "5432:5432"
     networks:
@@ -21,7 +16,7 @@ services:
       NODE_ENV: docker 
       DB_HOST: ctn-konoha-database
     ports:
-      - "3000:3000"
+      - "3333:3333"
     restart: always 
     depends_on:
       - ctn-konoha-database
