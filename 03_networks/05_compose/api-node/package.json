@@ -7,8 +7,7 @@
     "dev": "nodemon ./src/server.ts ",
     "build": "tsc",
     "server": "node ./build/src/server.js",
-    "typeormssss": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "migration-run": "typeorm migration:run"
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
     "dotenv": "^10.0.0",
