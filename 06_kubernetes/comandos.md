@@ -65,3 +65,10 @@ kubectl rollout undo deployment/product-deployment
 
 
 
+## MODO DECLARATIVO
+### Comando para rodar o deployment/service 
+kubectl apply -f product_arquivo_unico.yaml
+
+
+### Comando para remover o deployment/service 
+kubectl delete -f product_arquivo_unico.yaml
