@@ -43,5 +43,15 @@ kubectl scale deployment/flask-deployment --replicas=5
 kubectl scale deployment/flask-deployment --replicas=3
 
 
+## ATUALIZANDO IMAGEM DOS PODS
 ### Comando para atualizar imagem que está rodando nos pods
 kubectl set image deployment/<NOME> <NOME_CONTAINER>=<NOVA_IMAGEM>
+
+### Comando para verificar o status de atualização da imagem
+#### Para melhor vizualização, utilize um dashboard (minikube dashboard)
+ kubectl rollout status deployment/flask-deployment
+
+### Comando para dar rollback caso a atualização da imagem de errado
+kubectl rollout undo deployment/flask-deployment 
+
+
