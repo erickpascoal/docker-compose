@@ -21,6 +21,12 @@ kubectl describe pods
 ### comando para criar um service que expoe nosso pod (container)
 kubectl expose deployment flask-deployment --type=LoadBalancer --port=5000
 
+### Comando para visualizar services
+kubectl get services
+
+### Comando para deletar um service
+kubectl delete service <NOME_SERVICE>
+
 
 ## MINIKUBE
 
@@ -48,10 +54,11 @@ kubectl scale deployment/flask-deployment --replicas=3
 kubectl set image deployment/<NOME> <NOME_CONTAINER>=<NOVA_IMAGEM>
 
 ### Comando para verificar o status de atualização da imagem
-#### Para melhor vizualização, utilize um dashboard (minikube dashboard)
+#### Para melhor visualização, utilize um dashboard (minikube dashboard)
  kubectl rollout status deployment/flask-deployment
 
 ### Comando para dar rollback caso a atualização da imagem de errado
 kubectl rollout undo deployment/flask-deployment 
+
 
 
