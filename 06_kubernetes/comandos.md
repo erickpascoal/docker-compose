@@ -1,12 +1,12 @@
 ## DEPLOYMENT
 ### cria um deployment a partir de uma images (ja no docker hub)
-kubectl create deployment flask-deployment --image=erickpascoal/flask-kub-projeto 
+kubectl create deployment product-deployment --image=erickpascoal/product 
 
 ### verifica todos deployments ativos
 kubectl get deployments
 
 ### Deleta deployment
-kubectl delete deployment <NAME>
+kubectl delete deployment product-deployment
 
 ### detalha os deployments
 kubectl describe deployments
@@ -22,7 +22,7 @@ kubectl describe pods
 
 ## SERVICES
 ### comando para criar um service que expoe nosso pod (container)
-kubectl expose deployment flask-deployment --type=LoadBalancer --port=5000
+kubectl expose deployment product-deployment --type=LoadBalancer --port=3000
 
 ### Comando para visualizar services
 kubectl get services
@@ -40,16 +40,16 @@ minikube dashboard --url
 kubectl config view
 
 ### Comando para servir um pod localmente
-minikube service flask-deployment
+minikube service product-deployment
 
 
 ##  SCALE
 ### Comando para replicar pods, para caso um servidor caia, ele tenha outros para suportar
 ### utilizar comando "kubectl get rs" parar verificar os pods replicados
-kubectl scale deployment/flask-deployment --replicas=5
+kubectl scale deployment/product-deployment --replicas=5
 
 ### Caso precise reduzir a quantidade de replicas dos pods, basta repetir o comando, passando um numero menor (3 por exemplo)
-kubectl scale deployment/flask-deployment --replicas=3
+kubectl scale deployment/product-deployment --replicas=3
 
 
 ## ATUALIZANDO IMAGEM DOS PODS
@@ -58,10 +58,10 @@ kubectl set image deployment/<NOME> <NOME_CONTAINER>=<NOVA_IMAGEM>
 
 ### Comando para verificar o status de atualização da imagem
 #### Para melhor visualização, utilize um dashboard (minikube dashboard)
- kubectl rollout status deployment/flask-deployment
+ kubectl rollout status deployment/product-deployment
 
 ### Comando para dar rollback caso a atualização da imagem de errado
-kubectl rollout undo deployment/flask-deployment 
+kubectl rollout undo deployment/product-deployment 
 
 
 
