@@ -5,6 +5,9 @@ kubectl create deployment flask-deployment --image=erickpascoal/flask-kub-projet
 ### verifica todos deployments ativos
 kubectl get deployments
 
+### Deleta deployment
+kubectl delete deployment <NAME>
+
 ### detalha os deployments
 kubectl describe deployments
 
