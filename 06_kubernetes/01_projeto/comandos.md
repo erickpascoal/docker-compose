@@ -3,7 +3,7 @@
 kubectl create deployment flask-deployment --image=erickpascoal/flask-kub-projeto 
 
 ### verifica todos deployments ativos
-kubectl get deployment
+kubectl get deployments
 
 ### detalha os deployments
 kubectl describe deployments
@@ -14,3 +14,34 @@ kubectl get pods
 
 ### detalha os pods
 kubectl describe pods
+
+
+
+## SERVICES
+### comando para criar um service que expoe nosso pod (container)
+kubectl expose deployment flask-deployment --type=LoadBalancer --port=5000
+
+
+## MINIKUBE
+
+## Comando para abrir dashboard
+minikube dashboard --url 
+
+### Visualiza configuração geral
+kubectl config view
+
+### Comando para servir um pod localmente
+minikube service flask-deployment
+
+
+##  SCALE
+### Comando para replicar pods, para caso um servidor caia, ele tenha outros para suportar
+### utilizar comando "kubectl get rs" parar verificar os pods replicados
+kubectl scale deployment/flask-deployment --replicas=5
+
+### Caso precise reduzir a quantidade de replicas dos pods, basta repetir o comando, passando um numero menor (3 por exemplo)
+kubectl scale deployment/flask-deployment --replicas=3
+
+
+### Comando para atualizar imagem que está rodando nos pods
+kubectl set image deployment/<NOME> <NOME_CONTAINER>=<NOVA_IMAGEM>
